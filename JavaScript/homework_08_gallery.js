@@ -6,7 +6,7 @@ const refs = {
 	lightbox__button: document.querySelector('.lightbox__button'),
 	lightbox__image: document.querySelector('.lightbox__image'),
 };
-let index;
+let index = 0;
 const createdListOfElements = function (array) {
 	let itemElement = array.map((picture) => {
 		
@@ -34,7 +34,8 @@ refs.gallery.append(...createdListOfElements(items));
 function openLightbox() {
 	refs.lightbox.classList.add('is-open');
 	refs.lightbox__image.src = event.target.dataset.source;
-    
+	index = parseInt(event.target.dataset.id);
+	
     window.addEventListener('keydown', nextImage);
 	window.addEventListener('keydown', previousImage);
 	window.addEventListener('keydown', pressEscape);
